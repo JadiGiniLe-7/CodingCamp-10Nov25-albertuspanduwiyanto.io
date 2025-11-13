@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Todo List — Dark UI</title>
+<link rel="stylesheet" href="style.css" /></style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card" role="region" aria-label="Todo List Card">
+    <div class="header">
+      <h1>Todo List</h1>
+    </div>
+
+    <div class="controls" aria-hidden="false">
+      <div class="input-row">
+        <input id="todoText" class="text-input" type="text" placeholder="Add a todo . . ." aria-label="Task description" />
+        <div class="date-input" title="Due date">
+          <input id="todoDate" type="date" aria-label="Due date" />
+          <svg class="cal-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 10h5" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="3" y="4" width="18" height="18" rx="3" stroke="rgba(255,255,255,0.06)" fill="none" stroke-width="1.2"/>
+            <path d="M16 2v4M8 2v4" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <button id="addBtn" class="btn add-btn" title="Add todo" aria-label="Add todo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 5v14M5 12h14" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="spacer"></div>
+
+      <div class="top-actions">
+        <button id="filterBtn" class="secondary btn" title="Filter tasks">FILTER ▾</button>
+        <button id="deleteAllBtn" class="btn" title="Delete all tasks" aria-label="Delete all" style="background:linear-gradient(180deg,#8b6bff,#6b4cff); color:white;">DELETE ALL</button>
+      </div>
+    </div>
+
+    <div class="table-wrap" role="table" aria-label="Todo table">
+      <table id="todoTable">
+        <thead>
+          <tr>
+            <th style="width:44%;">Task</th>
+            <th style="width:22%;">Due Date</th>
+            <th style="width:18%;">Status</th>
+            <th style="width:16%;">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr class="empty-row">
+            <td colspan="4" class="empty">No task found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Filter dropdown (hidden by default) -->
+<div id="filterPopup" style="position:fixed; z-index:1000; display:none;">
+  <!-- will be positioned near button by JS -->
+  <div style="background:var(--card); padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.03); box-shadow: 0 8px 20px rgba(0,0,0,0.6);">
+    <button class="btn secondary" data-filter="all" style="display:block; width:100%; margin-bottom:6px;">All</button>
+    <button class="btn secondary" data-filter="pending" style="display:block; width:100%; margin-bottom:6px;">Pending</button>
+    <button class="btn secondary" data-filter="completed" style="display:block; width:100%;">Completed</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
